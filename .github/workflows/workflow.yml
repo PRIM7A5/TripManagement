@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [service-a, service-b]
+        service: [service-a, service-b, common-module]
 
     steps:
       - name: Checkout code
