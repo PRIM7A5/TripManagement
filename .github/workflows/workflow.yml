@@ -21,12 +21,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ${{ matrix.service }}/gradlew
+        run: chmod +x gradlew
 
       - name: Build ${{ matrix.service }}
-        working-directory: ${{ matrix.service }}
-        run: ./gradlew build
+        run: ./gradlew :${{ matrix.service }}:build
 
       - name: Tests and coverage check for ${{ matrix.service }}
-        working-directory: ${{ matrix.service }}
-        run: ./gradlew test jacocoTestReport jacocoTestCoverageVerification
+        run: ./gradlew :${{ matrix.service }}:test :${{ matrix.service }}:jacocoTestReport :${{ matrix.service }}:jacocoTestCoverageVerification
