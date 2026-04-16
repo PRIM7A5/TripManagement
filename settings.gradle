@@ -1,4 +1,4 @@
 rootProject.name = 'trip-management'
 
-include 'services:common-module'
+include 'common-module'
 //include 'services:service-b'

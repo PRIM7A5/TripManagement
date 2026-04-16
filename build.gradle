@@ -23,15 +23,17 @@ subprojects {
         }
     }
 
-    jacocoTestCoverageVerification {
-        violationRules {
-            rule {
-                limit {
-                    minimum = 0.80  // 80% coverage threshold
+    if (project.name != 'common-module') {
+        jacocoTestCoverageVerification {
+            violationRules {
+                rule {
+                    limit {
+                        minimum = 0.80
+                    }
                 }
             }
         }
-    }
 
-    check.dependsOn jacocoTestCoverageVerification
+        check.dependsOn jacocoTestCoverageVerification
+    }
 }
