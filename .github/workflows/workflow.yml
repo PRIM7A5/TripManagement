@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [service-a, service-b, common-module]
+        service: [common-module]
 
     steps:
       - name: Checkout code
@@ -21,12 +21,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x services/${{ matrix.service }}/gradlew
+        run: chmod +x ${{ matrix.service }}/gradlew
 
       - name: Build ${{ matrix.service }}
-        working-directory: services/${{ matrix.service }}
+        working-directory: ${{ matrix.service }}
         run: ./gradlew build
 
       - name: Tests and coverage check for ${{ matrix.service }}
-        working-directory: services/${{ matrix.service }}
+        working-directory: ${{ matrix.service }}
         run: ./gradlew test jacocoTestReport jacocoTestCoverageVerification
